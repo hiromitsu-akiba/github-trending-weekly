@@ -20,7 +20,7 @@ title: GitHubトレンドリポジトリ レビュー(週間: 2026年9月24日�
 ## 2. リポジトリ別サマリー(全20件)
 
 ### 1. alibaba/open-code-review
-- **リンク**: https://github.com/alibaba/open-code-review
+- **リンク**: (https://github.com/alibaba/open-code-review)
 - **概要・目的**: Alibaba社内で2年以上運用されてきたAIコードレビューアシスタントをOSS化。Gitの差分をLLMエージェントに渡し、行レベルの精密なレビューコメントを生成。
 - **主な特徴**: 決定論的パイプライン(ファイル選定・ルールマッチング・コメント位置決め)とLLM推論を組み合わせたハイブリッド構成。NPE・スレッドセーフ・XSS・SQLインジェクションなど多言語対応の組み込みルールセットを搭載。GitHub/GitLab/Gerrit/VS Code/MCP/Claude Code・Codex・Cursorと連携可能。
 - **想定用途・対象者**: 大規模開発組織のコードレビュー自動化、セキュリティ観点のPRチェック。
