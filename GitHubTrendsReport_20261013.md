@@ -7,96 +7,111 @@ title: "GitHubトレンドリポジトリ レビュー(週間: 2026年10月13日
 
 ## 全体トレンドの概観
 
-今回は[GitHub Trendingの週間表示](https://github.com/trending?since=weekly)で確認した11件を掲載する。取得日は2026年10月13日、日本時間。固定の月曜始まりの集計ではなく、GitHubが取得時点に表示した週間一覧である。以下のスター数も同じ画面の表示値を記録した。
+取得時点の週間トレンドでは、AIエージェントを使う開発と制作の道具が中心。11件のうち8件が、テスト、動画、CAD、解析、スキル配布、記憶管理、複数エージェント運用に関わる。単体のモデルより、仕事を実行して成果を確認する工程へ関心が広がっている。
 
-11件のうち、開発エージェントの運用や拡張、エージェントを使う制作・検証に関わるものが8件あった。テストのe2e、3Dモデル制作のtext-to-cad、動画制作のhyperframes、解析のreaと、エージェントに任せる作業の種類が広がっている。skills、claude-mem、plugins、openrigは、その作業を続けるための手順、記憶、拡張、チーム運用を扱う。
+e2eは自然言語の操作とアサーションを組み合わせ、hyperframesとtext-to-cadは動画や3Dモデルを出力する。skills、claude-mem、plugins、openrigは、その作業を繰り返すための手順と環境を整える。一方、AnyPS5の互換性開発、Flutterの複数環境向けアプリ開発、openGymの自己ホスト型サービスも掲載された。
 
-勉強会では、まずe2eの操作再生と通常のアサーションの組み合わせを確認したい。AIで生成した成果物の検証方法を議論しやすいためだ。続いてclaude-memの情報保持と、openrigの複数エージェント運用を比較する。記憶を増やすことと、担当を増やすことでは、運用時に確認すべき点が違う。
-
-AI以外ではAnyPS5の互換性開発、Flutterのアプリ開発、openGymの自己管理型サービスが並ぶ。掲載順は以下のとおりで、週間スター増加数の順位として並べ替えてはいない。
-
-| リポジトリ | 総スター | 週間増加 |
-|---|---:|---:|
-| boykopovar/AnyPS5 | 33,041 | 27,263 |
-| tester-army/e2e | 9,627 | 5,582 |
-| mattpocock/skills | 288,120 | 11,139 |
-| heygen-com/hyperframes | 61,893 | 4,482 |
-| thedotmack/claude-mem | 100,126 | 3,762 |
-| flutter/flutter | 179,985 | 806 |
-| cursor/plugins | 11,087 | 1,144 |
-| earthtojake/text-to-cad | 19,681 | 2,441 |
-| mvschwarz/openrig | 7,277 | 2,056 |
-| morluto/rea | 163,677 | 130,471 |
-| DuarteSantos8/openGym | 10,574 | 6,621 |
-
-週間増加はGitHubの表示を転記した値であり、独自にスター履歴を再集計したものではない。各項目のトレンド理由は、確認できた更新と、その機能に対する本レビューの解釈を分けて記す。掲載の直接原因や外部での拡散経路は、今回取得した一次情報からは確定できなかった。
+対象は2026年10月13日JSTに取得した[GitHub Trending週間表示](https://github.com/trending?since=weekly)の全11件。順序とスター数は取得画面に従う。トレンド理由にはWeb検索で確認した公式告知・更新と、注目背景の解釈を記す。更新が掲載を引き起こしたという因果関係を独立に検証したものではない。
 
 ## リポジトリ別サマリー
 
-### 1. [boykopovar/AnyPS5](https://github.com/boykopovar/AnyPS5)
+### 1. boykopovar/AnyPS5
 
-PS5実行ファイルをLinuxやWindowsのネイティブ形式へ変換する互換性開発ツール。リリンカーとシステムprxライブラリの実装を組み合わせ、シェーダーをSPIR-Vへ変換する。用途はゲーム互換性、保存、実行形式の研究。READMEでは、未対応の状態で例外終了することと、タイトル別の進捗を別途確認することを説明している。通常のゲーム利用を広く保証する段階とは判断しない。[README](https://github.com/boykopovar/AnyPS5/blob/main/README.md)
+- **リンク**：[https://github.com/boykopovar/AnyPS5](https://github.com/boykopovar/AnyPS5)
+- **概要・目的**：PS5の実行ファイルをLinux・Windowsのネイティブ形式へ変換する互換性開発ツール。ゲーム実行環境の移植と研究を目的とする。
+- **主な特徴**：リリンカーで実行形式を変換し、システムprxライブラリを独自実装。シェーダーをSPIR-Vへ変換する。C++製、GPL-2.0。 [README](https://github.com/boykopovar/AnyPS5/blob/main/README.md)
+- **想定用途・対象者**：ゲーム互換レイヤー、実行形式、保存技術を研究する開発者。
+- **その他特筆事項**：未対応の状態では例外終了する。タイトルごとの動作状況は公開の進捗表で確認する。 総スター33,150（今週+27,263）。
+- **トレンド入りの理由**：9月29日JST公開のv0.1.1で、フォント、セーブデータ、メディア再生などを追加。実際に動かせる機能が増え、PS5実行ファイルをPCへ移植する方式が注目材料になっている。 [公式出典](https://github.com/boykopovar/AnyPS5/releases/tag/v0.1.1)
 
-トレンド理由の根拠として確認したのは、9月28日UTC公開のv0.1.1でフォント、セーブデータ、メディア再生などの実装を追加したこと。週間27,263スターの増加と掲載は確認できたが、その増加を特定の更新に結び付ける証拠はない。互換性の進捗を公開している点が関心を集める要素だと考える。[リリース](https://github.com/boykopovar/AnyPS5/releases/tag/v0.1.1)
+### 2. tester-army/e2e
 
-### 2. [tester-army/e2e](https://github.com/tester-army/e2e)
+- **リンク**：[https://github.com/tester-army/e2e](https://github.com/tester-army/e2e)
+- **概要・目的**：自然言語によるエージェント操作と、通常のアサーションを同じテストで使うWeb・iOS・Android向けE2Eテスト基盤。
+- **主な特徴**：TypeScript製。WebはPlaywright、モバイルはagent-deviceを利用。検証済みの操作をキャッシュし、変更がない次回実行ではモデル呼び出しなしで再生する。Apache-2.0。 [README](https://github.com/tester-army/e2e/blob/main/README.md)
+- **想定用途・対象者**：Webとモバイルの業務フローを検証する開発者・QA担当者。
+- **その他特筆事項**：1.0未満でAPIと設定は変更される可能性がある。エージェント操作の結果をロケーターとアサーションで検証できる。 総スター9,670（今週+5,582）。
+- **トレンド入りの理由**：TesterArmyが10月1日にOSS化を公式発表。Web・iOS・Androidで共通APIを使い、操作再生で毎回のモデル利用を減らす設計を公開した。AIテストの実行費用と既存テストとの共存に具体策を出したことが注目の背景。 [公式出典](https://tester.army/blog/introducing-e2e)
 
-自然言語の目標をエージェントが操作し、ロケーターやアサーションで結果を確認するWeb・モバイル向けE2Eテスト基盤。検証済みの操作を記録し、次回はアプリが変わるまでモデル呼び出しなしで再生する。ブラウザーにはPlaywright、モバイルにはシミュレーターやエミュレーターを使う。対象は操作フローのテストを維持する開発チーム。1.0へ向けて開発中で、APIや設定の変更余地がある。[README](https://github.com/tester-army/e2e/blob/main/README.md)
+### 3. mattpocock/skills
 
-10月12日UTCのLimrun連携パッケージ更新では、ワーカーごとのホスト型端末、アプリ導入、録画、後片付けを追加した。週間5,582スター。自然言語の操作と決定的な検証を同じテストに置く設計が注目の要素だと考えるが、掲載の直接原因は未確認。[リリース](https://github.com/tester-army/e2e/releases/tag/%40e2e-dev/limrun%400.2.0)
+- **リンク**：[https://github.com/mattpocock/skills](https://github.com/mattpocock/skills)
+- **概要・目的**：Matt Pocockが日常の開発に使うエージェント向けスキル集。要件確認から実装、レビューまでの工程を再利用する。
+- **主な特徴**：小さく変更・組み合わせられる手順を配布。Claude Code、Codex、Copilotなどに対応。課題管理方法や共有用語をプロジェクトごとに設定できる。 [README](https://github.com/mattpocock/skills/blob/main/README.md)
+- **想定用途・対象者**：AIに任せる工程を調整しながら実際のアプリを開発するエンジニア。
+- **その他特筆事項**：完成アプリではなく、エージェントの作業手順を配布するリポジトリ。導入時に必要なスキルを選ぶ。 総スター288,214（今週+11,139）。
+- **トレンド入りの理由**：10月4日のv1.3.1でimplement-specを正式な開発スキルへ追加。仕様をタスクグラフとして読み、独立したworktreeで並列実装し、1つの統合ブランチへまとめてレビューする手順を整えた。AI開発の再現性を高める具体的な工程が注目材料。 [公式出典](https://github.com/mattpocock/skills/releases/tag/v1.3.1)
 
-### 3. [mattpocock/skills](https://github.com/mattpocock/skills)
+### 4. heygen-com/hyperframes
 
-開発者Matt Pocockが日常のエンジニアリングに使うエージェント向けスキル集。要件を聞き出す作業、共有用語の整理、仕様実装などを、小さく変更・組み合わせられる手順として配布する。Claude Code、Codex、Copilotなど複数の導入経路を用意している。対象はAIに任せる工程を自分で調整したい開発者。完成アプリの提供ではなく、作業方法を教える資産である。[README](https://github.com/mattpocock/skills/blob/main/README.md)
+- **リンク**：[https://github.com/heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)
+- **概要・目的**：HTML・CSS・素材・時間位置を指定できるアニメーションからMP4を生成するHeyGenの動画制作フレームワーク。
+- **主な特徴**：ローカルCLIとAIエージェント向けスキルを提供。構成の計画、HTML作成、プレビュー、レンダリングまでを扱う。TypeScript製、Apache-2.0。 [README](https://github.com/heygen-com/hyperframes/blob/main/README.md)
+- **想定用途・対象者**：説明動画や製品紹介動画をコードとエージェントで制作する開発者・制作担当者。
+- **その他特筆事項**：公式のHyperFrames StudioはmacOS・Linux版を提供し、Windows版は提供予定と案内。動画素材と音声を含む制作工程を扱う。 総スター61,948（今週+4,482）。
+- **トレンド入りの理由**：公式サイトがエージェント向け動画エディターHyperFrames Studioを公開し、動画制作の操作環境まで提供している。10月12日のv0.8.150ではレンダリング時のメモリ対策と合成全体への音声効果を追加。制作から書き出しまで使える範囲の拡大が注目材料。 [公式出典](https://www.hyperframes.dev/)、[関連出典](https://github.com/heygen-com/hyperframes/releases/tag/v0.8.150)
 
-10月4日UTC公開のv1.3.1では、仕様全体をタスクグラフとして扱い、独立したworktreeで実装を進めるimplement-specをエンジニアリング分類へ追加した。週間11,139スター。複数エージェントによる実装を工程として整理した点は注目材料だが、今回の掲載との因果関係は未確認。[リリース](https://github.com/mattpocock/skills/releases/tag/v1.3.1)
+### 5. thedotmack/claude-mem
 
-### 4. [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes)
+- **リンク**：[https://github.com/thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
+- **概要・目的**：エージェントの作業を記録・要約し、関連情報を後続セッションへ渡す永続的な記憶管理システム。
+- **主な特徴**：ツール利用の観測、意味的な要約、次回セッションへの文脈注入を組み合わせる。複数のエージェント環境に対応。TypeScript製、Apache-2.0。 [README](https://github.com/thedotmack/claude-mem/blob/main/README.md)
+- **想定用途・対象者**：長い開発を複数セッションで進め、判断や作業履歴を引き継ぎたい開発者。
+- **その他特筆事項**：利用方式によってローカル処理とホスト型の扱いが異なる。server runtimeと既定のworker runtimeの区別が必要。 総スター100,156（今週+3,762）。
+- **トレンド入りの理由**：10月13日JSTのv13.36.1で、server runtimeのprivate指定情報を送信前に除去する修正と、データベース更新時の競合対策を公開。セッションをまたぐ記憶を実運用するための情報保護と整合性の改善が続いている。既定のworker runtimeはprivate送信問題の影響外と公式に説明。 [公式出典](https://github.com/thedotmack/claude-mem/releases/tag/v13.36.1)
 
-HTML、CSS、素材、時間位置を指定できるアニメーションからMP4を生成する動画フレームワーク。ローカルCLIやAIコーディングエージェントから利用でき、制作手順を教えるスキルも配布する。用途は紹介動画、説明映像などのコードによる制作。見た目の生成だけでなく、プレビューとレンダリングまでを工程に含めている。[README](https://github.com/heygen-com/hyperframes/blob/main/README.md)
+### 6. flutter/flutter
 
-10月12日UTCのv0.8.150では、置き換えた画像リソースの解放によるレンダリング時のメモリ対策と、合成全体への音声効果などを更新した。週間4,482スター。動画制作をエージェントの作業に組み込めることが関心の要素だと考える。リリースがスター増加を起こしたかは未確認。[リリース](https://github.com/heygen-com/hyperframes/releases/tag/v0.8.150)
+- **リンク**：[https://github.com/flutter/flutter](https://github.com/flutter/flutter)
+- **概要・目的**：Dartでモバイル・Web・デスクトップ向けアプリを開発するUIフレームワーク。共通のコードで複数環境へ展開する。
+- **主な特徴**：ウィジェット、ホットリロード、パッケージ群、FFIやプラットフォームAPIによるネイティブ連携を提供。 [README](https://github.com/flutter/flutter/blob/master/README.md)
+- **想定用途・対象者**：複数プラットフォームのアプリを開発するチームとDart開発者。
+- **その他特筆事項**：AIエージェント用プラグインそのものではなく、利用者向けアプリを実装する基盤。GitHubのlatest release APIだけで現行SDKの最新版を判断しない。 総スター179,996（今週+806）。
+- **トレンド入りの理由**：Flutter公式ブログが10月8日にGenkit Dart 1.0を発表。Dart・Flutterで本番向けAI機能とエージェントの処理フローを作る選択肢を増やした。今回の週間一覧でAI開発関連が多いことと合わせ、既存のアプリ基盤へのAI機能統合が注目の背景と考えられる。 [公式出典](https://flutter.dev/blog/announcing-genkit-dart-1-0)
 
-### 5. [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
+### 7. cursor/plugins
 
-エージェントのツール利用や作業内容を記録・要約し、次のセッションへ関連する文脈を渡す記憶管理システム。複数回の開発作業を続ける利用者が対象。導入方式によってローカルとホスト型の扱いが異なるため、保持する情報と送信先を確認して使う必要がある。[README](https://github.com/thedotmack/claude-mem/blob/main/README.md)
+- **リンク**：[https://github.com/cursor/plugins](https://github.com/cursor/plugins)
+- **概要・目的**：Cursorのプラグイン仕様と公式プラグイン集。開発ツール、フレームワーク、外部サービスとの連携を配布する。
+- **主な特徴**：独立したディレクトリと.cursor-plugin/plugin.jsonで各プラグインを管理。MCP、スキル、サブエージェント、ルール、hooksをまとめられる。 [README](https://github.com/cursor/plugins/blob/main/README.md)
+- **想定用途・対象者**：Cursorの作業手順を拡張する開発者と、共通の拡張を配布するチーム。
+- **その他特筆事項**：READMEにはレビュー、学習、並列エージェント運用、Google Workspaceなどの連携例を掲載。 総スター11,095（今週+1,144）。
+- **トレンド入りの理由**：Cursorは公式発表でMCPやスキルをまとめるMarketplaceを開設し、Google Workspace連携も公式に追加した。外部ツールの操作と社内の作業手順を同じエージェントへ配布できる点が注目材料。今回の掲載に直接つながる新規発表は確認できず、背景として整理した。 [公式出典](https://prod.cursor.com/blog/marketplace)、[関連出典](https://cursor.com/changelog/google-workspace-plugins)
 
-10月12日UTC公開のv13.36.1は、server runtimeでprivate指定部分をフックから送る前に除去する修正を含む。リリースノートでは既定のworker runtimeはこの問題の影響外と説明している。週間3,762スター。セッションをまたぐ記憶が用途として注目されていると考えるが、今回の修正とトレンド入りの関係は未確認。[リリース](https://github.com/thedotmack/claude-mem/releases/tag/v13.36.1)
+### 8. earthtojake/text-to-cad
 
-### 6. [flutter/flutter](https://github.com/flutter/flutter)
+- **リンク**：[https://github.com/earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)
+- **概要・目的**：エージェントからローカルで3Dモデルを生成し、設計と製造向け出力を進めるCADツール。
+- **主な特徴**：STEP・GLB・STL・3MFの出力、製造向けチェック、図面生成、加工サービス連携を扱う。複数エージェント向けのプラグインとスキルを提供。Python製、MIT。 [README](https://github.com/earthtojake/text-to-cad/blob/main/README.md)
+- **想定用途・対象者**：自然言語とコードで3Dモデルを作る設計者、試作担当者、開発者。
+- **その他特筆事項**：開発用mainと配布用latestブランチを分ける。プラグインとスキルの重複導入を避ける案内がある。 総スター19,712（今週+2,441）。
+- **トレンド入りの理由**：10月12日JSTのv0.7.21でSTEP処理のクラッシュ、初回スナップショットの競合、Windowsワーカー表示を修正。モデル生成だけでなく、確認と出力までを既存エージェントから実行できる機能が注目材料。直近更新は対応環境の安定化を進めた。 [公式出典](https://github.com/earthtojake/text-to-cad/releases/tag/v0.7.21)
 
-Dartでモバイルを含む複数プラットフォームのアプリを開発するUIフレームワーク。ウィジェット、ホットリロード、パッケージ群、ネイティブ機能との接続を備える。対象は複数環境に共通の実装を展開したいアプリ開発者。エージェント拡張のリポジトリが多い今回の一覧では、アプリを実装する基盤として読むと位置付けが分かりやすい。[README](https://github.com/flutter/flutter/blob/master/README.md)
+### 9. mvschwarz/openrig
 
-週間806スターの増加と掲載を確認した。今回取得したGitHubのlatest release APIは2024年のベータ版を返したため、現在の最新バージョンの根拠には使っていない。特定の直近リリースや発表をトレンド入りの理由として挙げる証拠は得られず、直接原因は未確認。[公式リポジトリ](https://github.com/flutter/flutter)
+- **リンク**：[https://github.com/mvschwarz/openrig](https://github.com/mvschwarz/openrig)
+- **概要・目的**：Claude Code、Codex、Piを、役割と担当作業を持つ継続的なエージェントチームとして運用する基盤。
+- **主な特徴**：複数エージェントの共有文脈、担当、メッセージ、再開を管理。Node.jsとtmuxを使用。Apache-2.0。 [README](https://github.com/mvschwarz/openrig/blob/main/README.md)
+- **想定用途・対象者**：複数モデルやエージェントで長期の開発作業を進めるチーム。
+- **その他特筆事項**：WindowsはWSL2を利用。起動時にhooksや信頼設定を変更するため、変更内容を公式文書で説明している。 総スター7,290（今週+2,056）。
+- **トレンド入りの理由**：10月12日のv0.6.10で、利用プロバイダーの選択、Claudeセッションの復元、Codexへの送信を改善。56変更のうち38件が外部貢献者10人の変更と公式に報告。複数エージェントを継続運用する機能と、実利用に基づく改善が注目の背景。 [公式出典](https://github.com/mvschwarz/openrig/releases/tag/v0.6.10)
 
-### 7. [cursor/plugins](https://github.com/cursor/plugins)
+### 10. morluto/rea
 
-Cursorのプラグイン仕様と公式プラグイン集。各プラグインを独立したディレクトリとmanifestで管理する。READMEには学習、レビュー、プラグイン作成、並列エージェント運用、各種サービス連携などが並ぶ。対象はCursorの作業手順や外部サービス接続を追加する開発者・チーム。単一の機能より、拡張の配布方法とカタログに価値がある。[README](https://github.com/cursor/plugins/blob/main/README.md)
+- **リンク**：[https://github.com/morluto/rea](https://github.com/morluto/rea)
+- **概要・目的**：アプリの挙動やバイナリ、JavaScriptなどをエージェントから調査するリバースエンジニアリング基盤。
+- **主な特徴**：MCPとCLIを提供。Hopper、Ghidra、IDAなどと連携し、根拠と限界を付けた解析結果を返す。TypeScript製、MIT。 [README](https://github.com/morluto/rea/blob/main/README.md)
+- **想定用途・対象者**：ソースが手元にないアプリの仕組みを調査する開発者と解析担当者。
+- **その他特筆事項**：解析対象ごとに必要なエンジンと実行環境が異なる。週間増加数はGitHub表示値で、増加経緯を独自検証したものではない。 総スター167,547（今週+130,471）。
+- **トレンド入りの理由**：10月11日の6.4.0で、ADBによるAndroid端末・アプリ調査、JEB連携、大きな解析結果を段階的に読む機能を追加。エージェントから扱える対象をネイティブアプリやAndroidまで広げたことが注目材料。スター急増の具体的な拡散経路は確認できなかった。 [公式出典](https://github.com/morluto/rea/releases/tag/rea-agents-6.4.0)
 
-週間1,144スター。公式の配布例を参照して拡張を作れる点は注目材料だと考える。latest release APIに公開リリースはなく、今回確認したREADMEだけでは、特定の新規追加が掲載を起こしたと判断できない。
+### 11. DuarteSantos8/openGym
 
-### 8. [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad)
-
-エージェントからローカルで3Dモデルを生成し、STEP、GLB、STL、3MFへ出力するCAD向けツール。製造向けチェック、図面生成、加工サービスとの接続も扱う。対象はモデル作成を自然言語の依頼とコードで進めたい設計者・開発者。プラグインとスキルを複数のエージェント環境向けに提供している。[README](https://github.com/earthtojake/text-to-cad/blob/main/README.md)
-
-10月11日UTCのv0.7.21では、STEP関連のクラッシュ、初回スナップショットの競合、Windowsでのワーカー表示などを修正した。週間2,441スター。CAD出力を既存エージェントの作業に組み込める点が関心の要素だと考えるが、掲載の直接原因は未確認。[リリース](https://github.com/earthtojake/text-to-cad/releases/tag/v0.7.21)
-
-### 9. [mvschwarz/openrig](https://github.com/mvschwarz/openrig)
-
-Claude Code、Codex、Piを、役割、共有文脈、担当作業を持つ継続的なチームとして運用する基盤。対象は複数エージェントで長く開発を続けるチーム。READMEではNode.jsとtmuxを必要とし、WindowsはWSL2を案内する。起動時にプロバイダーのhooksや信頼設定を書き換えるため、何を変更するかも文書化している。[README](https://github.com/mvschwarz/openrig/blob/main/README.md)
-
-10月12日UTCのv0.6.10は、利用プロバイダーの指定、再開したClaudeセッションの復元、Codexへの送信などを修正した。週間2,056スター。複数エージェントの担当と再開を扱う点は運用上の関心に合うと考えるが、リリースと掲載の因果関係は未確認。[リリース](https://github.com/mvschwarz/openrig/releases/tag/v0.6.10)
-
-### 10. [morluto/rea](https://github.com/morluto/rea)
-
-アプリの挙動、JavaScript・Electron、ネイティブバイナリなどをエージェントから調査する解析基盤。MCPとCLIを用意し、結果に根拠と限界を付けて返す。既存アプリの仕組みを調べる開発者や解析担当者が対象。ネイティブ解析は既存のHopper、Ghidra、IDAなどとの連携を使い、対象ごとに必要な環境が異なる。[README](https://github.com/morluto/rea/blob/main/README.md)
-
-10月11日UTC公開のrea-agents 6.4.0では、ADBによるAndroid調査、JEB連携、大きな解析結果の段階的な参照などを追加した。GitHub週間表示では130,471スター増加。これは取得画面の値で、増加の内訳や経緯を別途検証したものではない。解析対象の拡張は注目材料だと考えるが、この大きな増加の直接原因は確定できない。[リリース](https://github.com/morluto/rea/releases/tag/rea-agents-6.4.0)
-
-### 11. [DuarteSantos8/openGym](https://github.com/DuarteSantos8/openGym)
-
-自分のサーバーで運動と体重を記録するアプリ。ルーティン計画、セット記録、体重推移、パスキー認証、端末間同期を扱う。対象は運動記録を自分で管理したい利用者。READMEではオフライン動作、既存アプリからの取り込み、自己ホストの手順を案内している。[README](https://github.com/DuarteSantos8/openGym/blob/main/README.md)
-
-10月10日UTC公開のv1.4.1では、実機でのアニメーション、更新検出、運動終了音などを修正した。週間6,621スター。自分でデータを保持できるサービスへの関心が注目の要素だと考える。直近の修正や特定の紹介記事が掲載を起こしたかは未確認。[リリース](https://github.com/DuarteSantos8/openGym/releases/tag/v1.4.1)
+- **リンク**：[https://github.com/DuarteSantos8/openGym](https://github.com/DuarteSantos8/openGym)
+- **概要・目的**：自分のサーバーでトレーニングと体重を記録するアプリ。運動記録を自分で管理することを目的とする。
+- **主な特徴**：ルーティン計画、セット記録、疲労の可視化、既存アプリからの取り込み、パスキー認証、オフライン動作と端末間同期を提供。アプリ本体はAGPL-3.0。 [README](https://github.com/DuarteSantos8/openGym/blob/main/README.md)
+- **想定用途・対象者**：筋力トレーニングを記録する利用者と、データの保存先を自分で管理したい利用者。
+- **その他特筆事項**：運動の画像・アニメーションにはアプリ本体と異なる利用条件がある。自己ホスト環境で利用できる。 総スター10,626（今週+6,621）。
+- **トレンド入りの理由**：公式ロードマップでは10月7日にUI刷新・ローテーション・同期改善、10月9日に運動カタログを1,324から5,632件へ拡大したと報告。自己ホスト型のまま記録と検索の使い勝手を高めた大型更新が、今週の注目材料になっている。 [公式出典](https://github.com/DuarteSantos8/openGym/blob/main/ROADMAP.md)
 
 レビュー対象11件／サマリー完成11件。
