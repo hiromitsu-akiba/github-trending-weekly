@@ -4,6 +4,7 @@ GitHub Trendingの週間レポートを記録するリポジトリ。
 
 ## レポート一覧
 
+- [週間レポート（2026年10月29日時点）](GitHubTrendsReport_20261029.md)
 - [週間レポート（2026年10月22日時点）](GitHubTrendsReport_20261022.md)
 - [週間レポート（2026年10月15日時点）](GitHubTrendsReport_20261015.md)
 - [週間レポート（2026年10月13日時点）](GitHubTrendsReport_20261013.md)
